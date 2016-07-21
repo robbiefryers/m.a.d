@@ -21,19 +21,21 @@ class Activities(models.Model):
 class Categories(models.Model):
 	name = models.CharField(max_length=128)
 	
-	
 	def __unicode__(self):      #For Python 2, use __str__ on Python 3
 		return self.name
 
 
 #Activities and category junction table
 class act_cat(models.Model):
-    act = models.ForeignKey(Activities, null=True)
+    act = models.ForeignKey(Activities, null=True, related_name='cats')
     cat = models.ForeignKey(Categories, null=True)
+   
+
 
 #Activities and category junction table
 class act_day(models.Model):
-    act = models.ForeignKey(Activities, null=True)
+    act = models.ForeignKey(Activities, null=True, related_name='days')
     day = models.CharField(max_length=32)
     startTime = models.TimeField(null=False, blank=False, default='12:00')
     endTime = models.TimeField(null=False, blank=False, default='12:00')
+

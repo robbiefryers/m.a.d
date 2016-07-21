@@ -12,8 +12,8 @@ from MAD.models import Activities, Categories, act_cat, act_day
 def populate():
     
     #Open the spreadsheet with formatted database info
-    workbook = xlrd.open_workbook('mad_app_format.xls')
-    worksheet = workbook.sheet_by_name('content')
+    workbook = xlrd.open_workbook('test.xls')
+    worksheet = workbook.sheet_by_name('Sheet1')
 
 
     #loop through all rows in the spreadsheet
@@ -22,6 +22,7 @@ def populate():
         
         #function to add info from the first 9 rows into the activity table
         #saves activity object in variable a
+        
         a = add_activity(
             name = worksheet.cell(row, 0).value,
             venue = worksheet.cell(row, 1).value,
@@ -33,7 +34,7 @@ def populate():
             contactNumber = worksheet.cell(row, 7).value,
             special = worksheet.cell(row, 8).value)
 
-
+        
         
         #take care of adding categorie(s) to the junction table
         for cat in range(9,13):
@@ -69,7 +70,7 @@ def populate():
                 endValue = timeValue[6:]
 
                 addingTimes = add_dayTime_to_activity(a,day,startValue,endValue)
-    
+        
 
 #function responsible for recording each activity into the database
 def add_activity(name,venue,postcode,agesLower,agesUpper,contactName,contactEmail,contactNumber,special):
@@ -91,6 +92,7 @@ def add_cat_to_activity(n, activity):
     try:
         c = Categories.objects.get(name=n)
         print "found"
+
         ac = act_cat.objects.create()
         ac.act = activity
         ac.cat = c
@@ -98,6 +100,7 @@ def add_cat_to_activity(n, activity):
 
 
     except Categories.DoesNotExist:
+        print n
         print "No category found"
 
 #function responsible for matching activity with their day and times
