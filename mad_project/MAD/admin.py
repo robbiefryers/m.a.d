@@ -4,7 +4,7 @@ from django.contrib import admin
 from MAD.models import Activities, Categories, act_cat, act_day
 
 class ActivityAdmin(admin.ModelAdmin):
-	list_display = ('name', 'postcode', 'contactName')
+	list_display = ('name', 'postcode', 'contactName', 'number')
 
 class JunctionAdmin(admin.ModelAdmin):
 	list_display = ('act', 'cat')

@@ -19,6 +19,9 @@ def populate():
     #loop through all rows in the spreadsheet
     #worksheet.nrows    
     for row in range(1, worksheet.nrows):
+
+        print worksheet.cell(row, 0).value
+        print worksheet.cell(row, 1).value
         
         #function to add info from the first 9 rows into the activity table
         #saves activity object in variable a
@@ -31,7 +34,7 @@ def populate():
             agesUpper = worksheet.cell(row, 4).value,
             contactName = worksheet.cell(row, 5).value,
             contactEmail = worksheet.cell(row, 6).value,
-            contactNumber = worksheet.cell(row, 7).value,
+            number = worksheet.cell(row, 7).value,
             special = worksheet.cell(row, 8).value)
 
         
@@ -73,15 +76,16 @@ def populate():
         
 
 #function responsible for recording each activity into the database
-def add_activity(name,venue,postcode,agesLower,agesUpper,contactName,contactEmail,contactNumber,special):
+def add_activity(name,venue,postcode,agesLower,agesUpper,contactName,contactEmail,number,special):
     a = Activities.objects.create(name=name)
+    print number
     a.venue=venue
     a.postcode=postcode
     a.agesLower=agesLower
     a.agesUpper=agesUpper
     a.contactName=contactName
     a.contactEmail=contactEmail
-    a.contactNumber=contactNumber
+    a.number=number
     a.special=special
     a.save()
     return a

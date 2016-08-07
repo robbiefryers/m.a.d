@@ -1,99 +1,136 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
+from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_401_UNAUTHORIZED, HTTP_201_CREATED, HTTP_200_OK
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import generics
+from rest_framework import permissions
+from rest_framework.authentication import TokenAuthentication
 
-from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser
-from rest_framework import viewsets
 
 from django.contrib.auth.models import User, Group 
 from models import Categories, Activities, act_day
-from MAD.serializers import CategorySerializer, GroupSerializer, ActivitySerializer
 
-from django.contrib.auth import authenticate, login
-
-
-def user_login(request):
-    if request.method == 'POST':
-        print 'log in request received'
+from MAD.serializers import CategorySerializer, GroupSerializer, ActivitySerializer, UserSerializer, UserLoginSerializer, NewAdminSerializer
 
 
-class JSONResponse(HttpResponse):
-    """
-    An HttpResponse that renders its content into JSON.
-    """
-    def __init__(self, data, **kwargs):
-        content = JSONRenderer().render(data)
-        kwargs['content_type'] = 'application/json'
-        super(JSONResponse, self).__init__(content, **kwargs)
+class login(APIView):
+    permission_classes = (permissions.AllowAny,)
+
+    def post(self, request, *args, **kwargs):
+        data = request.data
+        print data
+        serializer = UserLoginSerializer(data=data)
+        if serializer.is_valid():
+            new_data = serializer.data
+            return Response(new_data, status=HTTP_200_OK)
+        success = {"success": False}
+        return Response(success, status=HTTP_400_BAD_REQUEST)
 
 
-@csrf_exempt
-def activity_list(request):
+#View for gathering a list of all activities,
+#Authentication required = false, do not need an account to view this information
+class activity_list(APIView):
+    def get(self, request, format=None):
+        acts = Activities.objects.all()
+        serializer = ActivitySerializer(acts, many=True)
+        return Response(serializer.data)   
 
-    acts = Activities.objects.all()
-    serializer = ActivitySerializer(acts, many=True)
-    print "Get request processed"
-    return JSONResponse(serializer.data)
-
-
-@csrf_exempt
-def category_list(request):
-    """
-    List all code snippets, or create a new snippet.
-    """
-    if request.method == 'GET':
+#View for gathering a list of all the different categories,
+#Authentication required = No, called by categoryModal to display filter options
+class category_list(APIView):
+    def get(self, request, format=None):
         cats = Categories.objects.all()
         serializer = CategorySerializer(cats, many=True)
-        print "Get request processed"
-        return JSONResponse(serializer.data)
+        return Response(serializer.data)  
 
-    elif request.method == 'POST':
-        data = JSONParser().parse(request)
-        serializer = CategorySerializer(data=data)
+
+#View to update or remove activity
+#Authentication requried = True. Either a user with super or staff privillieges
+class ActivityDetail(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    def get_object(self, pk):
+        try:
+            return Activities.objects.get(pk=pk)
+        except Activities.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        act = self.get_object(pk)
+        serializer = ActivitySerializer(act)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        act = self.get_object(pk)
+        serializer = ActivitySerializer(act, data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return JSONResponse(serializer.data, status=201)
-        return JSONResponse(serializer.errors, status=400)
+            return Response(serializer.data)
+        return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
 
-@csrf_exempt
-def category_detail(request, pk):
-    """
-    Retrieve, update or delete a code snippet.
-    """
-    try:
-        cat = Categories.objects.get(pk=pk)
-    except Categories.DoesNotExist:
-        return HttpResponse(status=404)
+    def delete(self, request, pk, format=None):
+        act = self.get_object(pk)
+        act.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
-    if request.method == 'GET':
-        serializer = CategorySerializer(cat)
-        return JSONResponse(serializer.data)
 
-    elif request.method == 'PUT':
-        data = JSONParser().parse(request)
-        serializer = CategorySerializer(cat, data=data)
+
+class staff_activiy_list(APIView):
+
+    permission_classes = (permissions.IsAuthenticated,)
+    def get(self, request, format=None):
+        usr = request.user
+
+        if usr.groups.filter(name='SuperAdmin').exists() == True:
+            acts = Activities.objects.all()
+            serializer = ActivitySerializer(acts, many=True)
+            return Response(serializer.data) 
+        else:
+            return Response(serializer.errors, status=status.HTTP_401_UNAUTHORIZED)
+  
+
+
+    def post(self, request, format=None):
+        print request.user
+        serializer = ActivitySerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
-            return JSONResponse(serializer.data)
-        return JSONResponse(serializer.errors, status=400)
+            print serializer['name']
+            #serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            print 'not valid'
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    elif request.method == 'DELETE':
-        cat.delete()
-        return HttpResponse(status=204)
+#another view for super admin only
+class newAdmin(APIView):
+
+    permission_classes = (permissions.IsAuthenticated,)
+    def post(self, request, format=None):
+        usr = request.user
+        data = request.data
+
+        if usr.groups.filter(name='SuperAdmin').exists() == True:
+            serializer = NewAdminSerializer(data=data)
+            print serializer
+            
+            if serializer.is_valid():
+                print 'valid'
+                serializer.save();
+                statusData = serializer.data
+                newUsr = User.objects.get(username=data.get("username"))
+                g = Group.objects.get(name='ActivityAdministrators') 
+                g.user_set.add(newUsr)
+                return Response(statusData, status=HTTP_200_OK)
+
+            else:
+                print 'not valid'
+                return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
+
+        else:
+            return Response(data, status=HTTP_401_UNAUTHORIZED)
 
 
-class CategoryViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = Categories.objects.all()
-    serializer_class = CategorySerializer
 
 
-class GroupViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
+
+
+
+
