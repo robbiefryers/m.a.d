@@ -1,0 +1,192 @@
+[Mon Aug 08 12:21:41.179118 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:19737] mod_wsgi (pid=12651): Target WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py' cannot be loaded as Python module.
+[Mon Aug 08 12:21:41.179172 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:19737] mod_wsgi (pid=12651): Exception occurred processing WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py'.
+[Mon Aug 08 12:21:41.179196 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:19737] Traceback (most recent call last):
+[Mon Aug 08 12:21:41.179212 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:19737]   File "/home/code/m.a.d/mad_project/mad_project/wsgi.py", line 14, in <module>
+[Mon Aug 08 12:21:41.179264 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:19737]     application = get_wsgi_application()
+[Mon Aug 08 12:21:41.179275 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:19737]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Mon Aug 08 12:21:41.179308 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:19737]     django.setup()
+[Mon Aug 08 12:21:41.179318 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:19737]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 20, in setup
+[Mon Aug 08 12:21:41.179353 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:19737]     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+[Mon Aug 08 12:21:41.179363 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:19737]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 46, in __getattr__
+[Mon Aug 08 12:21:41.179424 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:19737]     self._setup(name)
+[Mon Aug 08 12:21:41.179434 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:19737]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 42, in _setup
+[Mon Aug 08 12:21:41.179448 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:19737]     self._wrapped = Settings(settings_module)
+[Mon Aug 08 12:21:41.179456 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:19737]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 98, in __init__
+[Mon Aug 08 12:21:41.179467 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:19737]     % (self.SETTINGS_MODULE, e)
+[Mon Aug 08 12:21:41.179538 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:19737] ImportError: Could not import settings 'mad_project.settings' (Is it on sys.path? Is there an import error in the settings file?): No module named mad_project.settings
+[Mon Aug 08 12:22:34.284370 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:9497] mod_wsgi (pid=12651): Target WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py' cannot be loaded as Python module.
+[Mon Aug 08 12:22:34.284403 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:9497] mod_wsgi (pid=12651): Exception occurred processing WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py'.
+[Mon Aug 08 12:22:34.284421 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:9497] Traceback (most recent call last):
+[Mon Aug 08 12:22:34.284441 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:9497]   File "/home/code/m.a.d/mad_project/mad_project/wsgi.py", line 14, in <module>
+[Mon Aug 08 12:22:34.284466 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:9497]     application = get_wsgi_application()
+[Mon Aug 08 12:22:34.284475 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:9497]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Mon Aug 08 12:22:34.284488 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:9497]     django.setup()
+[Mon Aug 08 12:22:34.284506 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:9497]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 20, in setup
+[Mon Aug 08 12:22:34.284518 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:9497]     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+[Mon Aug 08 12:22:34.284526 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:9497]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 46, in __getattr__
+[Mon Aug 08 12:22:34.284537 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:9497]     self._setup(name)
+[Mon Aug 08 12:22:34.284544 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:9497]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 42, in _setup
+[Mon Aug 08 12:22:34.284554 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:9497]     self._wrapped = Settings(settings_module)
+[Mon Aug 08 12:22:34.284560 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:9497]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 98, in __init__
+[Mon Aug 08 12:22:34.284570 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:9497]     % (self.SETTINGS_MODULE, e)
+[Mon Aug 08 12:22:34.284587 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:9497] ImportError: Could not import settings 'mad_project.settings' (Is it on sys.path? Is there an import error in the settings file?): No module named mad_project.settings
+[Mon Aug 08 12:31:11.337443 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449] mod_wsgi (pid=12651): Target WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py' cannot be loaded as Python module.
+[Mon Aug 08 12:31:11.337477 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449] mod_wsgi (pid=12651): Exception occurred processing WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py'.
+[Mon Aug 08 12:31:11.337496 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449] Traceback (most recent call last):
+[Mon Aug 08 12:31:11.337515 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]   File "/home/code/m.a.d/mad_project/mad_project/wsgi.py", line 14, in <module>
+[Mon Aug 08 12:31:11.337554 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]     application = get_wsgi_application()
+[Mon Aug 08 12:31:11.337563 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Mon Aug 08 12:31:11.337577 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]     django.setup()
+[Mon Aug 08 12:31:11.337584 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 20, in setup
+[Mon Aug 08 12:31:11.337596 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+[Mon Aug 08 12:31:11.337604 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 46, in __getattr__
+[Mon Aug 08 12:31:11.337615 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]     self._setup(name)
+[Mon Aug 08 12:31:11.337622 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 42, in _setup
+[Mon Aug 08 12:31:11.337633 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]     self._wrapped = Settings(settings_module)
+[Mon Aug 08 12:31:11.337640 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 98, in __init__
+[Mon Aug 08 12:31:11.337660 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]     % (self.SETTINGS_MODULE, e)
+[Mon Aug 08 12:31:11.337677 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449] ImportError: Could not import settings 'mad_project.settings' (Is it on sys.path? Is there an import error in the settings file?): No module named mad_project.settings
+[Mon Aug 08 12:31:40.672194 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:16409] mod_wsgi (pid=12651): Target WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py' cannot be loaded as Python module.
+[Mon Aug 08 12:31:40.672221 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:16409] mod_wsgi (pid=12651): Exception occurred processing WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py'.
+[Mon Aug 08 12:31:40.672239 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:16409] Traceback (most recent call last):
+[Mon Aug 08 12:31:40.672256 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:16409]   File "/home/code/m.a.d/mad_project/mad_project/wsgi.py", line 14, in <module>
+[Mon Aug 08 12:31:40.672280 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:16409]     application = get_wsgi_application()
+[Mon Aug 08 12:31:40.672289 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:16409]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Mon Aug 08 12:31:40.672302 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:16409]     django.setup()
+[Mon Aug 08 12:31:40.672309 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:16409]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 20, in setup
+[Mon Aug 08 12:31:40.672320 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:16409]     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+[Mon Aug 08 12:31:40.672327 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:16409]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 46, in __getattr__
+[Mon Aug 08 12:31:40.672338 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:16409]     self._setup(name)
+[Mon Aug 08 12:31:40.672345 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:16409]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 42, in _setup
+[Mon Aug 08 12:31:40.672355 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:16409]     self._wrapped = Settings(settings_module)
+[Mon Aug 08 12:31:40.672362 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:16409]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 98, in __init__
+[Mon Aug 08 12:31:40.672372 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:16409]     % (self.SETTINGS_MODULE, e)
+[Mon Aug 08 12:31:40.672388 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:16409] ImportError: Could not import settings 'mad_project.settings' (Is it on sys.path? Is there an import error in the settings file?): No module named mad_project.settings
+[Mon Aug 08 12:31:40.778696 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:10521] mod_wsgi (pid=12651): Target WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py' cannot be loaded as Python module.
+[Mon Aug 08 12:31:40.778708 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:10521] mod_wsgi (pid=12651): Exception occurred processing WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py'.
+[Mon Aug 08 12:31:40.778722 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:10521] Traceback (most recent call last):
+[Mon Aug 08 12:31:40.778736 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:10521]   File "/home/code/m.a.d/mad_project/mad_project/wsgi.py", line 14, in <module>
+[Mon Aug 08 12:31:40.778765 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:10521]     application = get_wsgi_application()
+[Mon Aug 08 12:31:40.778774 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:10521]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Mon Aug 08 12:31:40.778786 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:10521]     django.setup()
+[Mon Aug 08 12:31:40.778794 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:10521]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 20, in setup
+[Mon Aug 08 12:31:40.778804 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:10521]     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+[Mon Aug 08 12:31:40.778811 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:10521]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 46, in __getattr__
+[Mon Aug 08 12:31:40.778822 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:10521]     self._setup(name)
+[Mon Aug 08 12:31:40.778829 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:10521]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 42, in _setup
+[Mon Aug 08 12:31:40.778839 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:10521]     self._wrapped = Settings(settings_module)
+[Mon Aug 08 12:31:40.778846 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:10521]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 98, in __init__
+[Mon Aug 08 12:31:40.778855 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:10521]     % (self.SETTINGS_MODULE, e)
+[Mon Aug 08 12:31:40.778867 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:10521] ImportError: Could not import settings 'mad_project.settings' (Is it on sys.path? Is there an import error in the settings file?): No module named mad_project.settings
+[Mon Aug 08 12:43:59.352105 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521] mod_wsgi (pid=12651): Target WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py' cannot be loaded as Python module.
+[Mon Aug 08 12:43:59.352136 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521] mod_wsgi (pid=12651): Exception occurred processing WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py'.
+[Mon Aug 08 12:43:59.352156 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521] Traceback (most recent call last):
+[Mon Aug 08 12:43:59.352174 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]   File "/home/code/m.a.d/mad_project/mad_project/wsgi.py", line 14, in <module>
+[Mon Aug 08 12:43:59.352200 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]     application = get_wsgi_application()
+[Mon Aug 08 12:43:59.352209 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Mon Aug 08 12:43:59.352222 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]     django.setup()
+[Mon Aug 08 12:43:59.352230 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 20, in setup
+[Mon Aug 08 12:43:59.352242 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+[Mon Aug 08 12:43:59.352249 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 46, in __getattr__
+[Mon Aug 08 12:43:59.352261 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]     self._setup(name)
+[Mon Aug 08 12:43:59.352278 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 42, in _setup
+[Mon Aug 08 12:43:59.352290 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]     self._wrapped = Settings(settings_module)
+[Mon Aug 08 12:43:59.352297 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 98, in __init__
+[Mon Aug 08 12:43:59.352307 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]     % (self.SETTINGS_MODULE, e)
+[Mon Aug 08 12:43:59.352339 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521] ImportError: Could not import settings 'mad_project.settings' (Is it on sys.path? Is there an import error in the settings file?): No module named mad_project.settings
+[Mon Aug 08 12:50:51.299100 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449] mod_wsgi (pid=12651): Target WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py' cannot be loaded as Python module.
+[Mon Aug 08 12:50:51.299131 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449] mod_wsgi (pid=12651): Exception occurred processing WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py'.
+[Mon Aug 08 12:50:51.299150 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449] Traceback (most recent call last):
+[Mon Aug 08 12:50:51.299168 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]   File "/home/code/m.a.d/mad_project/mad_project/wsgi.py", line 14, in <module>
+[Mon Aug 08 12:50:51.299193 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]     application = get_wsgi_application()
+[Mon Aug 08 12:50:51.299203 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Mon Aug 08 12:50:51.299216 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]     django.setup()
+[Mon Aug 08 12:50:51.299224 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 20, in setup
+[Mon Aug 08 12:50:51.299235 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+[Mon Aug 08 12:50:51.299243 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 46, in __getattr__
+[Mon Aug 08 12:50:51.299255 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]     self._setup(name)
+[Mon Aug 08 12:50:51.299262 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 42, in _setup
+[Mon Aug 08 12:50:51.299272 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]     self._wrapped = Settings(settings_module)
+[Mon Aug 08 12:50:51.299280 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 98, in __init__
+[Mon Aug 08 12:50:51.299290 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449]     % (self.SETTINGS_MODULE, e)
+[Mon Aug 08 12:50:51.299307 2016] [:error] [pid 12651:tid 140703443711744] [remote 109.246.48.138:7449] ImportError: Could not import settings 'mad_project.settings' (Is it on sys.path? Is there an import error in the settings file?): No module named mad_project.settings
+[Mon Aug 08 12:50:51.543408 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521] mod_wsgi (pid=12651): Target WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py' cannot be loaded as Python module.
+[Mon Aug 08 12:50:51.543442 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521] mod_wsgi (pid=12651): Exception occurred processing WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py'.
+[Mon Aug 08 12:50:51.543461 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521] Traceback (most recent call last):
+[Mon Aug 08 12:50:51.543479 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]   File "/home/code/m.a.d/mad_project/mad_project/wsgi.py", line 14, in <module>
+[Mon Aug 08 12:50:51.543503 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]     application = get_wsgi_application()
+[Mon Aug 08 12:50:51.543512 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Mon Aug 08 12:50:51.543525 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]     django.setup()
+[Mon Aug 08 12:50:51.543532 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 20, in setup
+[Mon Aug 08 12:50:51.543543 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+[Mon Aug 08 12:50:51.543551 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 46, in __getattr__
+[Mon Aug 08 12:50:51.543562 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]     self._setup(name)
+[Mon Aug 08 12:50:51.543568 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 42, in _setup
+[Mon Aug 08 12:50:51.543578 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]     self._wrapped = Settings(settings_module)
+[Mon Aug 08 12:50:51.543585 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 98, in __init__
+[Mon Aug 08 12:50:51.543595 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521]     % (self.SETTINGS_MODULE, e)
+[Mon Aug 08 12:50:51.543612 2016] [:error] [pid 12651:tid 140703326213888] [remote 109.246.48.138:10521] ImportError: Could not import settings 'mad_project.settings' (Is it on sys.path? Is there an import error in the settings file?): No module named mad_project.settings
+[Mon Aug 08 12:55:55.061190 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:48208] mod_wsgi (pid=13471): Target WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py' cannot be loaded as Python module.
+[Mon Aug 08 12:55:55.061237 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:48208] mod_wsgi (pid=13471): Exception occurred processing WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py'.
+[Mon Aug 08 12:55:55.061257 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:48208] Traceback (most recent call last):
+[Mon Aug 08 12:55:55.061272 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:48208]   File "/home/code/m.a.d/mad_project/mad_project/wsgi.py", line 14, in <module>
+[Mon Aug 08 12:55:55.061322 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:48208]     application = get_wsgi_application()
+[Mon Aug 08 12:55:55.061334 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:48208]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Mon Aug 08 12:55:55.061368 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:48208]     django.setup()
+[Mon Aug 08 12:55:55.061379 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:48208]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 20, in setup
+[Mon Aug 08 12:55:55.061426 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:48208]     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+[Mon Aug 08 12:55:55.061438 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:48208]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 46, in __getattr__
+[Mon Aug 08 12:55:55.061518 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:48208]     self._setup(name)
+[Mon Aug 08 12:55:55.061529 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:48208]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 42, in _setup
+[Mon Aug 08 12:55:55.061548 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:48208]     self._wrapped = Settings(settings_module)
+[Mon Aug 08 12:55:55.061557 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:48208]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 98, in __init__
+[Mon Aug 08 12:55:55.061569 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:48208]     % (self.SETTINGS_MODULE, e)
+[Mon Aug 08 12:55:55.061588 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:48208] ImportError: Could not import settings 'mad_project.settings' (Is it on sys.path? Is there an import error in the settings file?): No module named mad_project.settings
+[Mon Aug 08 12:56:15.505935 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248] mod_wsgi (pid=13471): Target WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py' cannot be loaded as Python module.
+[Mon Aug 08 12:56:15.505966 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248] mod_wsgi (pid=13471): Exception occurred processing WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py'.
+[Mon Aug 08 12:56:15.505986 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248] Traceback (most recent call last):
+[Mon Aug 08 12:56:15.506007 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]   File "/home/code/m.a.d/mad_project/mad_project/wsgi.py", line 14, in <module>
+[Mon Aug 08 12:56:15.506035 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]     application = get_wsgi_application()
+[Mon Aug 08 12:56:15.506044 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Mon Aug 08 12:56:15.506058 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]     django.setup()
+[Mon Aug 08 12:56:15.506066 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 20, in setup
+[Mon Aug 08 12:56:15.506078 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+[Mon Aug 08 12:56:15.506087 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 46, in __getattr__
+[Mon Aug 08 12:56:15.506099 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]     self._setup(name)
+[Mon Aug 08 12:56:15.506107 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 42, in _setup
+[Mon Aug 08 12:56:15.506118 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]     self._wrapped = Settings(settings_module)
+[Mon Aug 08 12:56:15.506126 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 98, in __init__
+[Mon Aug 08 12:56:15.506137 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]     % (self.SETTINGS_MODULE, e)
+[Mon Aug 08 12:56:15.506166 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248] ImportError: Could not import settings 'mad_project.settings' (Is it on sys.path? Is there an import error in the settings file?): No module named mad_project.settings
+[Mon Aug 08 12:56:15.741434 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:39248] mod_wsgi (pid=13471): Target WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py' cannot be loaded as Python module.
+[Mon Aug 08 12:56:15.741457 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:39248] mod_wsgi (pid=13471): Exception occurred processing WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py'.
+[Mon Aug 08 12:56:15.741475 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:39248] Traceback (most recent call last):
+[Mon Aug 08 12:56:15.741493 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:39248]   File "/home/code/m.a.d/mad_project/mad_project/wsgi.py", line 14, in <module>
+[Mon Aug 08 12:56:15.741519 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:39248]     application = get_wsgi_application()
+[Mon Aug 08 12:56:15.741528 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:39248]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Mon Aug 08 12:56:15.741542 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:39248]     django.setup()
+[Mon Aug 08 12:56:15.741550 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:39248]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 20, in setup
+[Mon Aug 08 12:56:15.741577 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:39248]     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+[Mon Aug 08 12:56:15.741585 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:39248]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 46, in __getattr__
+[Mon Aug 08 12:56:15.741597 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:39248]     self._setup(name)
+[Mon Aug 08 12:56:15.741605 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:39248]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 42, in _setup
+[Mon Aug 08 12:56:15.741616 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:39248]     self._wrapped = Settings(settings_module)
+[Mon Aug 08 12:56:15.741623 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:39248]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 98, in __init__
+[Mon Aug 08 12:56:15.741634 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:39248]     % (self.SETTINGS_MODULE, e)
+[Mon Aug 08 12:56:15.741652 2016] [:error] [pid 13471:tid 140661407319808] [remote 109.246.48.138:39248] ImportError: Could not import settings 'mad_project.settings' (Is it on sys.path? Is there an import error in the settings file?): No module named mad_project.settings
+[Mon Aug 08 12:56:58.677028 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248] mod_wsgi (pid=13471): Target WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py' cannot be loaded as Python module.
+[Mon Aug 08 12:56:58.677059 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248] mod_wsgi (pid=13471): Exception occurred processing WSGI script '/home/code/m.a.d/mad_project/mad_project/wsgi.py'.
+[Mon Aug 08 12:56:58.677078 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248] Traceback (most recent call last):
+[Mon Aug 08 12:56:58.677095 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]   File "/home/code/m.a.d/mad_project/mad_project/wsgi.py", line 14, in <module>
+[Mon Aug 08 12:56:58.677122 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]     application = get_wsgi_application()
+[Mon Aug 08 12:56:58.677139 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Mon Aug 08 12:56:58.677153 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]     django.setup()
+[Mon Aug 08 12:56:58.677161 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 20, in setup
+[Mon Aug 08 12:56:58.677173 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+[Mon Aug 08 12:56:58.677180 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 46, in __getattr__
+[Mon Aug 08 12:56:58.677192 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]     self._setup(name)
+[Mon Aug 08 12:56:58.677199 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 42, in _setup
+[Mon Aug 08 12:56:58.677209 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]     self._wrapped = Settings(settings_module)
+[Mon Aug 08 12:56:58.677216 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 98, in __init__
+[Mon Aug 08 12:56:58.677227 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248]     % (self.SETTINGS_MODULE, e)
+[Mon Aug 08 12:56:58.677244 2016] [:error] [pid 13471:tid 140661424105216] [remote 109.246.48.138:39248] ImportError: Could not import settings 'mad_project.settings' (Is it on sys.path? Is there an import error in the settings file?): No module named mad_project.settings
