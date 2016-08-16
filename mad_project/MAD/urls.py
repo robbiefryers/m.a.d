@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^activities/$', views.activity_list.as_view()),
     url(r'^activities/(?P<pk>[0-9]+)/$', views.ActivityDetail.as_view()),
     url(r'^staff/$', views.staff_activiy_list.as_view()),
+    url(r'^new-event/$', views.newEvent.as_view()),
     url(r'^new-admin/$', views.newAdmin.as_view()),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 

@@ -46,7 +46,7 @@ class category_list(APIView):
 #View to update or remove activity
 #Authentication requried = True. Either a user with super or staff privillieges
 class ActivityDetail(APIView):
-    permission_classes = (permissions.IsAuthenticated,)
+
     def get_object(self, pk):
         try:
             return Activities.objects.get(pk=pk)
@@ -60,10 +60,12 @@ class ActivityDetail(APIView):
 
     def put(self, request, pk, format=None):
         act = self.get_object(pk)
+
         serializer = ActivitySerializer(act, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
+
         return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
@@ -113,7 +115,7 @@ class newAdmin(APIView):
             
             if serializer.is_valid():
                 print 'valid'
-                serializer.save();
+                serializer.save()
                 statusData = serializer.data
                 newUsr = User.objects.get(username=data.get("username"))
                 g = Group.objects.get(name='ActivityAdministrators') 
@@ -128,9 +130,23 @@ class newAdmin(APIView):
             return Response(data, status=HTTP_401_UNAUTHORIZED)
 
 
+class newEvent(APIView):
+    def get(self, request, format=None):
+        return Response(status=HTTP_200_OK)
+
+    def post(self, request):
+        
+        serializer = ActivitySerializer(data=request.data)
+        print 'blank'
+        if serializer.is_valid():
+            print 'valid'
+            serializer.save()
+        else:
+            print 'not valid'
+
+        return Response(status=HTTP_200_OK)
 
 
 
 
-
-
+    

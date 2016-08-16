@@ -71,6 +71,80 @@ class ActivitySerializer(serializers.ModelSerializer):
         fields = ('name', 'venue', 'postcode', 'agesLower', 'agesUpper', 'contactName',
         	'contactEmail', 'number', 'special', 'days', 'cats')
 
+
+    def update(self, instance, validated_data):
+        
+        #Update and return an existing `activity` instance, given the validated data.
+       
+        instance.name = validated_data.get('name', instance.name)
+        instance.venue = validated_data.get('venue', instance.venue)
+        instance.postcode = validated_data.get('postcode', instance.postcode)
+        instance.agesLower = validated_data.get('agesLower', instance.agesLower)
+        instance.agesUpper = validated_data.get('agesUpper', instance.agesUpper)
+        instance.contactName = validated_data.get('contactName', instance.contactName)
+        instance.contactEmail = validated_data.get('contactEmail', instance.contactEmail)
+        instance.number = validated_data.get('number', instance.number)
+        instance.special = validated_data.get('special', instance.special)
+        instance.save()
+
+        act = Activities.objects.get(pk=instance.pk)
+        days = act_day.objects.filter(act=act)
+        cats = act_cat.objects.filter(act=act)
+
+        # Create or update page instances that are in the request and add the days to the updatedDays
+        updatedDays = []
+        for item in validated_data['days']:
+            updatedDays.append(item['day'])
+
+            #check if the same day is in the modified data, if it is check if the times have changed and update them
+            try:
+                sameDay = days.get(act=act, day= item['day'])
+                if sameDay.startTime==item['startTime'] and sameDay.endTime==item['endTime']:
+                    #no change necessary as same as before
+                    pass
+                
+                else:
+                    sameDay.startTime = item['startTime']
+                    sameDay.endTime = item['endTime']
+                    sameDay.save()
+
+            except:
+                newDay = act_day(act=act, day=item['day'], startTime=item['startTime'], endTime=item['endTime'])
+                newDay.save()
+        
+        # Delete any pages not included in the request
+        for d in days:
+            if d.day not in updatedDays:
+                d.delete()
+                print 'deleted'
+
+        # Create or update category instances that are in the request
+        updatedCats = []
+        for item in validated_data['cats']:
+            updatedCats .append(item['cat']['name'])
+            try:
+                print item['cat']['name']
+                sameCat = cats.get(cat__name=item['cat']['name'])            
+                print 'found'
+
+            except:
+                print 'adding cat'
+                newCat = Categories.objects.get(name=item['cat']['name'])
+                newEventCat = act_cat(act=act, cat=newCat)
+                newEventCat.save()
+
+        # Delete any categories not included in the request
+        for c in cats:
+            if c.cat.name not in updatedCats:
+                c.delete()
+
+
+        return instance
+
+
+
+
+
 class UserSerializer(serializers.ModelSerializer):
     acs = serializers.PrimaryKeyRelatedField(many=True, queryset = Activities.objects.all())
 
