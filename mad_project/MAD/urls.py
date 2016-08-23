@@ -5,6 +5,7 @@ from MAD import views
 
 urlpatterns = [
     url(r'^login/$', views.login.as_view()),
+		url(r'^new-pass/$', views.setPassword.as_view()),
     url(r'^categories/$', views.category_list.as_view()),
     url(r'^activities/$', views.activity_list.as_view()),
     url(r'^activities/(?P<pk>[0-9]+)/$', views.ActivityDetail.as_view()),

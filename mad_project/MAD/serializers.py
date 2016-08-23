@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from models import Categories, Activities, act_day, act_cat
+from models import Categories, Activities, act_day, act_cat, UserProfile
 from django.contrib.auth.models import User, Group 
 from django.contrib.auth import authenticate, login
 from rest_framework.authtoken.models import Token
@@ -12,9 +12,10 @@ class UserLoginSerializer(serializers.ModelSerializer):
     userGroup = serializers.CharField(allow_blank = True, read_only=True)
     success = serializers.BooleanField(default=False)
     usr_obj=None
+    firstTime = serializers.BooleanField(default=False)
     class Meta:
         model = User
-        fields = ('username', 'password', 'token', 'userGroup', 'success')
+        fields = ('username', 'password', 'token', 'userGroup', 'success', 'firstTime')
         extra_kwargs = {'password': {"write_only": True}}
 
     def validate(self, data):
@@ -40,7 +41,13 @@ class UserLoginSerializer(serializers.ModelSerializer):
             data['token'] = Token.objects.get(user=usr_obj)
             data['userGroup'] = usr_obj.groups.get()
             data['success'] = True
-        
+            try:
+                data['firstTime'] = UserProfile.objects.get(user=usr_obj).firstLogIn
+
+            except:
+                print 'failing'
+                pass
+
         return data
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -68,9 +75,24 @@ class ActivitySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Activities
-        fields = ('name', 'venue', 'postcode', 'agesLower', 'agesUpper', 'contactName',
-        	'contactEmail', 'number', 'special', 'days', 'cats')
+        fields = ('id', 'name', 'venue', 'postcode', 'agesLower', 'agesUpper', 'contactName',
+        	'contactEmail', 'number', 'special', 'owner', 'days', 'cats')
 
+    def create(self, validated_data):
+        print 'hello creating'
+        activity = Activities(
+            name=validated_data['name'],
+            venue=validated_data['venue'],
+            postcode=validated_data['postcode'],
+            agesLower=validated_data['agesLower'],
+            agesUpper=validated_data['agesUpper'],
+            contactName=validated_data['contactName'],
+            contactEmail=validated_data['contactEmail'],
+            number=validated_data['number'],
+            special=validated_data['special'],
+            )
+        activity.save()
+        return self
 
     def update(self, instance, validated_data):
         
@@ -138,7 +160,6 @@ class ActivitySerializer(serializers.ModelSerializer):
             if c.cat.name not in updatedCats:
                 c.delete()
 
-
         return instance
 
 
@@ -191,4 +212,5 @@ class NewAdminSerializer(serializers.ModelSerializer):
         user = User(username=validated_data['username'])
         user.set_password(validated_data['password'])
         user.save()
+
         return user

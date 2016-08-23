@@ -1,7 +1,7 @@
 
 # Register your models here.
 from django.contrib import admin
-from MAD.models import Activities, Categories, act_cat, act_day
+from MAD.models import Activities, Categories, act_cat, act_day, UserProfile
 
 class ActivityAdmin(admin.ModelAdmin):
 	list_display = ('name', 'postcode', 'contactName', 'number')
@@ -16,5 +16,7 @@ admin.site.register(Activities, ActivityAdmin)
 admin.site.register(Categories)
 admin.site.register(act_cat, JunctionAdmin)
 admin.site.register(act_day, DaysAdmin)
+admin.site.register(UserProfile)
+
 
 

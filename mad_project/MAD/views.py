@@ -7,7 +7,7 @@ from rest_framework.authentication import TokenAuthentication
 
 
 from django.contrib.auth.models import User, Group 
-from models import Categories, Activities, act_day
+from models import Categories, Activities, act_day, UserProfile
 
 from MAD.serializers import CategorySerializer, GroupSerializer, ActivitySerializer, UserSerializer, UserLoginSerializer, NewAdminSerializer
 
@@ -24,6 +24,18 @@ class login(APIView):
             return Response(new_data, status=HTTP_200_OK)
         success = {"success": False}
         return Response(success, status=HTTP_400_BAD_REQUEST)
+
+class setPassword(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def post(self, request, format=None):
+        usr = request.user
+        usr.set_password(request.data['passOne'])
+        usr.save()
+        usrProf = UserProfile.objects.get(user=usr)
+        usrProf.firstLogIn = False
+        usrProf.save()
+        return Response(status=HTTP_200_OK)
 
 
 #View for gathering a list of all activities,
@@ -111,15 +123,15 @@ class newAdmin(APIView):
 
         if usr.groups.filter(name='SuperAdmin').exists() == True:
             serializer = NewAdminSerializer(data=data)
-            print serializer
             
             if serializer.is_valid():
-                print 'valid'
                 serializer.save()
                 statusData = serializer.data
                 newUsr = User.objects.get(username=data.get("username"))
                 g = Group.objects.get(name='ActivityAdministrators') 
                 g.user_set.add(newUsr)
+                UserProfile.objects.create(user=newUsr)
+        
                 return Response(statusData, status=HTTP_200_OK)
 
             else:
@@ -137,7 +149,7 @@ class newEvent(APIView):
     def post(self, request):
         
         serializer = ActivitySerializer(data=request.data)
-        print 'blank'
+
         if serializer.is_valid():
             print 'valid'
             serializer.save()
@@ -145,8 +157,5 @@ class newEvent(APIView):
             print 'not valid'
 
         return Response(status=HTTP_200_OK)
-
-
-
 
     

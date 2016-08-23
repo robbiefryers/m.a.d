@@ -13,6 +13,14 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:
         Token.objects.create(user=instance)
 
+
+class UserProfile(models.Model):  
+    user = models.OneToOneField(User)
+    firstLogIn = models.BooleanField(default=True)
+    
+    def __unicode__(self):
+        return self.user.username
+
 #Activities table
 class Activities(models.Model):
     name = models.CharField(max_length=128)
@@ -32,10 +40,10 @@ class Activities(models.Model):
 
 #Category table
 class Categories(models.Model):
-	name = models.CharField(max_length=128)
-	
-	def __unicode__(self):      #For Python 2, use __str__ on Python 3
-		return self.name
+    name = models.CharField(max_length=128)
+    
+    def __unicode__(self):      #For Python 2, use __str__ on Python 3
+        return self.name
 
 
 #Activities and category junction table
