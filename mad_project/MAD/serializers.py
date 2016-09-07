@@ -33,21 +33,27 @@ class UserLoginSerializer(serializers.ModelSerializer):
 
         #Check if usr_obj is set to a User object and then check is posted password matches
         if usr_obj:
+            print 'good 1'
             if not usr_obj.check_password(password):
+                print 'no pas'
                 raise serializers.ValidationError("Incorrect Password")
 
             #Will get to here if there are no validation errors,
             #assign the users token and their privillege group to the response
+            print 'good 2'
             data['token'] = Token.objects.get(user=usr_obj)
+            print 'another'
             data['userGroup'] = usr_obj.groups.get()
             data['success'] = True
+            print 'good 3'
             try:
                 data['firstTime'] = UserProfile.objects.get(user=usr_obj).firstLogIn
+                print 'good 3'
 
             except:
                 print 'failing'
                 pass
-
+        print 'good 4'
         return data
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -68,18 +74,36 @@ class actCatSerializer(serializers.ModelSerializer):
         model = act_cat
         fields = ('catName',)
 
+class ownerSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(required=False)
+
+    def validate(self, data):
+        try:
+            usr = User.objects.get(username=data['username'])
+            print 'success'
+            return data
+
+        except User.DoesNotExist:
+            raise serializers.ValidationError("No user with that name registered")
+
+
+    class Meta:
+        model = User
+        fields = ('username',)
+        model = User
+        validators =[]
 
 class ActivitySerializer(serializers.ModelSerializer):
     days = dayTimeSerializer(many=True)
     cats = actCatSerializer(many=True)
-
+    owner = ownerSerializer(allow_null=True)
     class Meta:
         model = Activities
         fields = ('id', 'name', 'venue', 'postcode', 'agesLower', 'agesUpper', 'contactName',
         	'contactEmail', 'number', 'special', 'owner', 'days', 'cats')
 
+
     def create(self, validated_data):
-        print 'hello creating'
         activity = Activities(
             name=validated_data['name'],
             venue=validated_data['venue'],
@@ -92,7 +116,27 @@ class ActivitySerializer(serializers.ModelSerializer):
             special=validated_data['special'],
             )
         activity.save()
-        return self
+
+        if validated_data['owner']:
+            usr = User.objects.get(username = validated_data['owner']['username'])
+            activity.owner = usr
+            activity.save()
+            
+
+        for item in validated_data['days']:
+            print 'entering day associtaion'
+            newDay = act_day(act=activity, day=item['day'], startTime=item['startTime'], endTime=item['endTime'])
+            newDay.save()
+
+        for item in validated_data['cats']:
+            print 'entering cat associtaion'
+            newCat = Categories.objects.get(name=item['cat']['name'])
+            newEventCat = act_cat(act=activity, cat=newCat)
+            newEventCat.save()                       
+
+        print activity
+
+        return activity
 
     def update(self, instance, validated_data):
         
@@ -112,6 +156,18 @@ class ActivitySerializer(serializers.ModelSerializer):
         act = Activities.objects.get(pk=instance.pk)
         days = act_day.objects.filter(act=act)
         cats = act_cat.objects.filter(act=act)
+
+        
+        if validated_data['owner']:
+            usr = User.objects.get(username = validated_data['owner']['username'])
+            instance.owner = usr
+            instance.save()
+
+        else:
+            instance.owner = None
+            instance.save()
+
+
 
         # Create or update page instances that are in the request and add the days to the updatedDays
         updatedDays = []
@@ -204,7 +260,6 @@ class NewAdminSerializer(serializers.ModelSerializer):
 
         if usr_obj:
             raise serializers.ValidationError("Already a user with that username")
-            print 'already user'
 
         return data
 

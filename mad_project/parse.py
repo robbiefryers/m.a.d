@@ -6,7 +6,8 @@ django.setup()
 
 import xlrd
 
-from MAD.models import Activities, Categories, act_cat, act_day
+from django.contrib.auth.models import User, Group
+from MAD.models import Activities, Categories, act_cat, act_day, UserProfile
 
 
 def populate():
@@ -18,14 +19,11 @@ def populate():
 
     #loop through all rows in the spreadsheet
     #worksheet.nrows    
-    for row in range(1, worksheet.nrows):
-
-        print worksheet.cell(row, 0).value
-        print worksheet.cell(row, 1).value
+    for row in range(1, 4):
         
         #function to add info from the first 9 rows into the activity table
         #saves activity object in variable a
-        
+        print row
         a = add_activity(
             name = worksheet.cell(row, 0).value,
             venue = worksheet.cell(row, 1).value,
@@ -73,6 +71,27 @@ def populate():
                 endValue = timeValue[6:]
 
                 addingTimes = add_dayTime_to_activity(a,day,startValue,endValue)
+        
+        #take care of adding or associating user accounts to DB
+        if worksheet.cell(row, 20).value != xlrd.empty_cell.value:
+
+            usr, created = User.objects.get_or_create(username=worksheet.cell(row, 20).value)
+            a.owner=usr
+            a.save() 
+
+            if created:
+               # means you have created a new person
+               usr.set_password('a')
+               usr.save()
+               usrP = UserProfile(user = usr, firstLogIn=True)
+               usrP.save()
+               g = Group.objects.get(name='ActivityAdministrators') 
+               g.user_set.add(usr)
+            
+            else:
+                print 'already added'
+
+
         
 
 #function responsible for recording each activity into the database

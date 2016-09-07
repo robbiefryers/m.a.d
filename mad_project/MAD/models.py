@@ -15,7 +15,7 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 
 
 class UserProfile(models.Model):  
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, related_name='own')
     firstLogIn = models.BooleanField(default=True)
     
     def __unicode__(self):
@@ -25,14 +25,14 @@ class UserProfile(models.Model):
 class Activities(models.Model):
     name = models.CharField(max_length=128)
     venue = models.CharField(max_length=128)
-    postcode = models.CharField(max_length=16)
+    postcode = models.CharField(max_length=16, blank=True)
     agesLower = models.IntegerField(default=3)
     agesUpper = models.IntegerField(default=100)
     contactName = models.CharField(max_length=128, null=True, blank=True)
     contactEmail = models.EmailField(max_length=256, null=True, blank=True)
-    number = models.CharField(max_length=32, blank = True)
+    number = models.CharField(max_length=32, blank=True)
     special = models.CharField(max_length=256, blank = True)
-    owner = models.ForeignKey('auth.User', null=True, related_name='acs')
+    owner = models.ForeignKey('auth.User', null=True)
 
     def __unicode__(self):      #For Python 2, use __str__ on Python 3
         return self.name
